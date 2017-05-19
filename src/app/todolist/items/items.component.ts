@@ -26,7 +26,7 @@ export class ItemsComponent  {
         this.itemsService = itemsService;
     }
 
-    handleRemoveEvent($event) {
-        this.itemsService.removeItem($event);
+    handleRemoveEvent(item: Item) {
+        this.itemsService.removeItem(item);
     }
 }
