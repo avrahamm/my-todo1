@@ -1,6 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input } from '@angular/core';
 import {Item} from '../item';
-
+import {ItemsService} from '../items.service';
 
 @Component({
   selector: 'app-items',
@@ -9,13 +9,24 @@ import {Item} from '../item';
           <app-item
                   *ngFor="let currItem of items"
                   [item]="currItem"
+                  (itemRemoved)="handleRemoveEvent(itemToRemove)"
           ></app-item>
       </ul>
   `,
-  styles: [],
+    // providers: [ItemsService],
+    styles: [],
 })
 export class ItemsComponent  {
     @Input()
     public items: Item[];
 
+    public itemsService: ItemsService;
+
+    constructor(itemsService: ItemsService) {
+        this.itemsService = itemsService;
+    }
+
+    handleRemoveEvent(itemToRemove: Item) {
+        this.itemsService.removeItem(itemToRemove);
+    }
 }
