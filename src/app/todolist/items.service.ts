@@ -7,8 +7,8 @@ export class ItemsService {
   public items: Item[];
   constructor() {
     this.items = [
-      new Item('11'),
-      new Item('22')
+      // new Item('11'),
+      // new Item('22')
     ] ;
   }
 
