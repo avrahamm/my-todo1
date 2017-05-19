@@ -9,7 +9,7 @@ import {ItemsService} from '../items.service';
           <app-item
                   *ngFor="let currItem of items"
                   [item]="currItem"
-                  (itemRemoved)="handleRemoveEvent(itemToRemove)"
+                  (itemRemoved)="handleRemoveEvent($event)"
           ></app-item>
       </ul>
   `,
@@ -26,7 +26,7 @@ export class ItemsComponent  {
         this.itemsService = itemsService;
     }
 
-    handleRemoveEvent(itemToRemove: Item) {
-        this.itemsService.removeItem(itemToRemove);
+    handleRemoveEvent($event) {
+        this.itemsService.removeItem($event);
     }
 }
