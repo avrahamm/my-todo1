@@ -5,8 +5,9 @@ import {Component, EventEmitter, Output} from '@angular/core';
   template: `
       <input class="new-todo"
              type="text"
-             (keydown.enter)="itemAdded.emit($event.target.value)"
-             placeholder="What needs to be done?" 
+             (keydown.enter)="addItem($event)"
+             placeholder="What needs to be done?"
+             [value]="title"
              autofocus="">
   `,
   styles: []
@@ -15,4 +16,10 @@ import {Component, EventEmitter, Output} from '@angular/core';
 export class ItemBoxComponent {
     @Output()
     public itemAdded = new EventEmitter<string>();
+    title = '';
+
+    addItem($event): void {
+        this.itemAdded.emit($event.target.value);
+        $event.target.value = null;
+    }
 }
