@@ -8,7 +8,9 @@ import {Item} from '../item';
           <div class="view">
               <input class="toggle"
                      (checked)="item.completed"
-                     type="checkbox">
+                     type="checkbox"
+                        (change)="updateCompletedStatus($event)"
+              >
               <label
                       (dblclick)="item.isEditing=true"
               >{{item.title}}</label>
@@ -52,5 +54,9 @@ export class ItemComponent  {
 
     removeItem() {
         this.itemRemoved.emit(this.item);
+    }
+
+    updateCompletedStatus($event) {
+        this.item.completed = $event.target.checked;
     }
 }
