@@ -7,7 +7,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
              type="text"
              (keydown.enter)="addItem($event)"
              placeholder="What needs to be done?"
-             [value]="title"
+             [(ngModel)]="title"
              autofocus="">
   `,
   styles: []
@@ -19,7 +19,16 @@ export class ItemBoxComponent {
     title = '';
 
     addItem($event): void {
+        // original Nir's style,
+        // $event.target.value may be replaced
+        // with this.item
         this.itemAdded.emit($event.target.value);
-        $event.target.value = null;
+        /**
+         * @link:https://stackoverflow.com/questions/41224893/cant-bind-to-ngmodel-since-it-isnt-a-known-property-of-input-during-two-wa
+         * You are missing FormsModule import in your module to use ngModel-
+         * in src/app/todolist/todolist.module.ts !!!
+         * not only in src/app/app.module.ts
+         */
+        this.title = null;
     }
 }
