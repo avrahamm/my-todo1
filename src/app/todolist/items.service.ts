@@ -24,4 +24,19 @@ export class ItemsService {
     const index = this.items.indexOf(item);
     this.items.splice(index, 1);
   }
+
+  getCompletedItemsCounter(): number {
+    let completedItemsCounter = 0 ;
+    for ( let index = 0; index < this.items.length; index++) {
+        if (this.items[index].completed ) {
+            completedItemsCounter++;
+        }
+    }
+    return completedItemsCounter;
+  }
+
+    getUncompletedItemsCounter(): number {
+        const completedItemsCounter = this.getCompletedItemsCounter();
+        return this.items.length - completedItemsCounter;
+    }
 }

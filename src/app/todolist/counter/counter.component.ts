@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-counter',
   template: `
-      <span class="todo-count"><strong>0</strong> items left</span> 
+      <span class="todo-count">
+          <strong>{{uncompletedItemsCounter}}</strong> items left
+      </span>
   `,
   styles: []
 })
 export class CounterComponent  {
-
+    @Input()
+    public uncompletedItemsCounter: number;
 }

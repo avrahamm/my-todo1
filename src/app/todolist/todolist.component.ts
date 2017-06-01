@@ -17,7 +17,7 @@ import {ItemsService} from './items.service';
           ></app-items>
       </app-main>
       <app-footer>
-          <app-counter></app-counter>
+          <app-counter [uncompletedItemsCounter]="items.getUncompletedItemsCounter()"></app-counter>
           <app-action-btn></app-action-btn>
       </app-footer>
   `,

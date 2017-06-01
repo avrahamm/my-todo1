@@ -12,10 +12,12 @@ import {ItemComponent} from './item/item.component';
 import {CounterComponent} from './counter/counter.component';
 import {ActionBtnComponent} from './action-btn/action-btn.component';
 import {ItemsService} from './items.service';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
     imports: [
-        CommonModule
+        CommonModule,
+        FormsModule
     ],
     declarations: [TodolistComponent, MainComponent,
         HeaderComponent, FooterComponent,
