@@ -14,7 +14,7 @@ import {ItemsService} from '../items.service';
               >
               <label
                       (dblclick)="item.isEditing=true"
-              >{{item.title}}</label>
+              >{{item.title | Up}} , {{item.created | date:'short'}}</label>
               <button class="destroy"
                       (click)="removeItem()"
               ></button>

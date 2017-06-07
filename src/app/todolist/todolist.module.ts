@@ -13,6 +13,7 @@ import {CounterComponent} from './counter/counter.component';
 import {ActionBtnComponent} from './action-btn/action-btn.component';
 import {ItemsService} from './items.service';
 import {FormsModule} from '@angular/forms';
+import { UpPipe } from './up.pipe';
 
 @NgModule({
     imports: [
@@ -24,7 +25,8 @@ import {FormsModule} from '@angular/forms';
         TitleComponent, ItemBoxComponent,
         ToggleComponent, ItemsComponent,
         ItemComponent, CounterComponent,
-        ActionBtnComponent],
+        ActionBtnComponent,
+        UpPipe],
     providers: [ItemsService],
     exports: [TodolistComponent]
 })
