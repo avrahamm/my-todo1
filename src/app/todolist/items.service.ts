@@ -26,17 +26,30 @@ export class ItemsService {
   }
 
   getCompletedItemsCounter(): number {
-    let completedItemsCounter = 0 ;
-    for ( let index = 0; index < this.items.length; index++) {
-        if (this.items[index].completed ) {
-            completedItemsCounter++;
-        }
-    }
-    return completedItemsCounter;
+      let completedItemsCounter = 0;
+      for (const item of this.items) {
+          if (item.completed) {
+              completedItemsCounter++;
+          }
+      }
+      return completedItemsCounter;
   }
 
     getUncompletedItemsCounter(): number {
         const completedItemsCounter = this.getCompletedItemsCounter();
         return this.items.length - completedItemsCounter;
+    }
+
+    toggleAll(completedStatus: boolean): void {
+        for ( const item of this.items){
+            item.completed = completedStatus;
+        }
+        this.items = [
+            ...this.items
+        ] ;
+    }
+
+    removeCompletedItems(): void {
+        this.items = this.items.filter( item => item.completed === false);
     }
 }

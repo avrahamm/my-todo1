@@ -11,14 +11,18 @@ import {ItemsService} from './items.service';
           ></app-item-box>
       </app-header>
       <app-main>
-          <app-toggle></app-toggle>
+          <app-toggle
+              (toggleAllItems)="handleToggleAll($event)"
+          ></app-toggle>
           <app-items
             [items]="items.getItems()"
           ></app-items>
       </app-main>
       <app-footer>
           <app-counter [uncompletedItemsCounter]="items.getUncompletedItemsCounter()"></app-counter>
-          <app-action-btn></app-action-btn>
+          <app-action-btn
+            (clearCompleted)="handleClearCompleted()"
+          ></app-action-btn>
       </app-footer>
   `,
   styles: []
@@ -29,4 +33,12 @@ export class TodolistComponent  {
   constructor(items: ItemsService) {
     this.items = items;
   }
+
+  handleToggleAll(completedStatus: boolean): void {
+      this.items.toggleAll(completedStatus);
+  }
+
+    handleClearCompleted(): void {
+      this.items.removeCompletedItems();
+    }
 }

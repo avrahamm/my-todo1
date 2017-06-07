@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Item} from '../item';
+import {ItemsService} from '../items.service';
 
 @Component({
   selector: 'app-item',
@@ -31,8 +32,14 @@ export class ItemComponent  {
   @Input()
   public item: Item;
 
+    public itemsService: ItemsService;
+
     @Output()
     public itemRemoved = new EventEmitter<Item>() ;
+
+    constructor( itemsService: ItemsService) {
+        this.itemsService = itemsService;
+    }
 
     getClass() {
         return {
